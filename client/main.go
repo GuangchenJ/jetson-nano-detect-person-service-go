@@ -18,7 +18,7 @@ func main() {
 	config := db.InitConfig()
 
 	// conn, err := grpc.Dial(conf.Basic.RpcNetwork()+":"+conf.Basic.RpcPort(), grpc.WithTransportCredentials(Detect.GetClientCreds()))
-	conn, err := grpc.Dial("10.100.214.20:50005", grpc.WithTransportCredentials(Detect.GetClientCreds()))
+	conn, err := grpc.Dial(config.Grpc.Host+":"+config.Grpc.Port, grpc.WithTransportCredentials(Detect.GetClientCreds()))
 	if err != nil {
 		log.Panicln(err.Error())
 	}

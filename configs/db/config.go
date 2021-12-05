@@ -12,6 +12,7 @@ type AppConfig struct {
 	Mode     string   `json:"mode"`
 	DataBase DataBase `json:"data_base"`
 	Redis    Redis    `json:"redis"`
+	Grpc     Grpc     `json:"grpc"`
 }
 
 // DataBase mysql配置
@@ -36,6 +37,11 @@ type Redis struct {
 	Port    string `json:"port"`
 	Pwd     string `json:"pwd"`
 	Prefix  string `json:"prefix"`
+}
+
+type Grpc struct {
+	Host string `json:"host"`
+	Port string `json:"port"`
 }
 
 var ServConfig AppConfig

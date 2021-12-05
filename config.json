@@ -21,5 +21,9 @@
     "port": "6379",
     "pwd": "",
     "prefix": "pedesFlow_"
+  },
+  "grpc": {
+    "host": "10.100.214.20",
+    "port": "50005"
   }
 }
