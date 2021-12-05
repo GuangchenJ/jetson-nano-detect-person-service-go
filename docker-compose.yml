@@ -1,0 +1,27 @@
+version: '3.4'
+
+services:
+  # 主服务
+  jetson-nano-detect-server:
+    image: Cocktail98/jetson-nano-detect-server
+    container_name: jetson-nano-detect-server
+    #    build:
+    #      context: .
+    #      dockerfile: ./Dockerfile
+    restart: always
+    environment:
+      # 设置时区，不然 logs 的时间不对
+      TZ: "Asia/Shanghai" # 时区
+
+      JETSON_NANO_DETECT_SERVER_BASIC_RPC_NETWORK: "10.100.214.20"  # Jetson nano RPC 地址
+      JETSON_NANO_DETECT_SERVER_BASIC_RPC_PORT: "50005"             # Jetson nano RPC 端口
+    volumes:
+      - ./cert:/cert
+    networks:
+      net:
+        aliases:
+          - jetson-nano-detect-server
+
+networks:
+  net:
+    driver: bridge

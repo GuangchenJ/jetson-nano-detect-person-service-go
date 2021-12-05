@@ -1,0 +1,25 @@
+{
+  "app_name": "图书馆人流量检测系统",
+  "mode": "dev",
+  "port": "8019",
+  "data_base": {
+    "driver": "mysql",
+    "host": "112.74.180.220",
+    "port": "3306",
+    "user": "root",
+    "pwd": "root",
+    "database": "pedes_flow_db",
+    "charset": "utf8mb4",
+    "parse_time": "True",
+    "loc": "Local",
+    "log_level": "info",
+    "slow_threshold": 200
+  },
+  "redis": {
+    "net_work": "tcp",
+    "addr": "127.0.0.1",
+    "port": "6379",
+    "pwd": "",
+    "prefix": "pedesFlow_"
+  }
+}
