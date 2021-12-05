@@ -23,5 +23,5 @@ RUN apk --no-cache add tzdata ca-certificates
 # cpoy the app from builder
 COPY --from=builder /go/bin/app /app
 ENTRYPOINT /app
-LABEL Name=hominsu/smart-ag-server Version=1.0
+LABEL Name=cocktail98/jetson-nano-detect-person-service-go Version=1.0
 EXPOSE 50001 50002 6380 6381

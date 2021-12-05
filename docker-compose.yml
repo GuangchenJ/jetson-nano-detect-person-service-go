@@ -3,8 +3,8 @@ version: '3.4'
 services:
   # 主服务
   jetson-nano-detect-server:
-    image: Cocktail98/jetson-nano-detect-server
-    container_name: jetson-nano-detect-server
+    image: cocktail98/jetson-nano-detect-server-go
+    container_name: jetson-nano-detect-server-go
     #    build:
     #      context: .
     #      dockerfile: ./Dockerfile
@@ -20,7 +20,7 @@ services:
     networks:
       net:
         aliases:
-          - jetson-nano-detect-server
+          - jetson-nano-detect-server-go
 
 networks:
   net:

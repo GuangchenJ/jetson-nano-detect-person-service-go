@@ -3,8 +3,9 @@ package creds
 import (
 	"crypto/tls"
 	"crypto/x509"
-	"google.golang.org/grpc/credentials"
 	"io/ioutil"
+
+	"google.golang.org/grpc/credentials"
 )
 
 func GetServerCreds() credentials.TransportCredentials {

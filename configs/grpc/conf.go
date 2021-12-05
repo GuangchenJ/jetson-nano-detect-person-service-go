@@ -16,16 +16,16 @@ var (
 )
 
 func init() {
-	//typeOfEnv := reflect.TypeOf(*env)
-	//valueOfEnv := reflect.ValueOf(*env)
+	// typeOfEnv := reflect.TypeOf(*env)
+	// valueOfEnv := reflect.ValueOf(*env)
 	//
-	//for i := 0; i < typeOfEnv.NumField(); i++ {
+	// for i := 0; i < typeOfEnv.NumField(); i++ {
 	//	if value := os.Getenv(valueOfEnv.Field(i).String()); value != "" {
 	//		SetEnv(typeOfEnv.Field(i).Name, value)
 	//	} else {
 	//		EnvError(errors.New("env should not be empty"))
 	//	}
-	//}
+	// }
 }
 
 func SetEnv(key, value string) {

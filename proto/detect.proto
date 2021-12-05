@@ -12,13 +12,18 @@ message BoxRect {
   int64 class_id = 5;    // 检测种类
 }
 
+message CameraRect {
+  int64 camera_id = 1;
+  repeated BoxRect box_rect = 2;
+}
+
 message DetectRequest {
   bool status = 1;
 }
 
 message DetectResponse {
   bool status = 1;
-  repeated BoxRect rect = 2;
+  repeated CameraRect camera_rect = 2;
 }
 
 service DetectResultService {

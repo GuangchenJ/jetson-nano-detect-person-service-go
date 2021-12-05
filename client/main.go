@@ -7,7 +7,6 @@ import (
 
 	"google.golang.org/grpc"
 
-	"go_server/client/defs"
 	"go_server/configs/db"
 	"go_server/datasource/database"
 	Detect "go_server/detect_service"
@@ -38,16 +37,23 @@ func main() {
 			continue
 		}
 
-		r := defs.RpcResponse{DetectResponse: resp}.ToResponse()
+		// r := defs.RpcResponse{DetectResponse: resp}.ToResponse()
 		// 		bytes, err := json.Marshal(r.WithoutImg())
 		// 		if err != nil {
 		// 			log.Println("WithoutImg: ", err.Error())
 		// 			return
 		// 		}
 		// 		fmt.Println(string(bytes))
+		if resp.Status {
+			for _, newPedesFlowInfo := range resp.GetCameraRect() {
+				err = pedesFlowService.NewPedesFlowInfo(
+					model.PedesFlowInfo{CameraID: uint(newPedesFlowInfo.CameraId), Time: time.Now().Format("20060102150405"), PersonNum: uint(len(newPedesFlowInfo.BoxRect))})
+			}
+		}
 
-		err = pedesFlowService.NewPedesFlowInfo(
-			model.PedesFlowInfo{CameraID: 1, Time: time.Now().Format("20060102150405"), PersonNum: uint(len(r.Rect))})
+		// err = pedesFlowService.NewPedesFlowInfo(
+		//     model.PedesFlowInfo{CameraID: resp.CameraRect.CameraId, Time: time.Now().Format("20060102150405"), PersonNum: uint(len(resp.CameraRect))})
+		//
 		if nil != err {
 			break
 		}
