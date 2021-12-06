@@ -4,6 +4,8 @@ package Detect;
 
 option go_package = "/detect_service;Detect";
 
+import "google/protobuf/timestamp.proto";
+
 message BoxRect {
   double x = 1;       // x 坐标
   double y = 2;       // y 坐标
@@ -24,6 +26,7 @@ message DetectRequest {
 message DetectResponse {
   bool status = 1;
   repeated CameraRect camera_rect = 2;
+  google.protobuf.Timestamp resp_timestamp = 3;
 }
 
 service DetectResultService {

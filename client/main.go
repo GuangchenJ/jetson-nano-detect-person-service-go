@@ -46,6 +46,9 @@ func main() {
 		// 		fmt.Println(string(bytes))
 		if resp.Status {
 			for _, newPedesFlowInfo := range resp.GetCameraRect() {
+				// format pd timestamp to Time
+				time.Unix(resp.GetRespTimestamp().Seconds, int64(resp.GetRespTimestamp().Nanos))
+
 				err = pedesFlowService.NewPedesFlowInfo(
 					model.PedesFlowInfo{CameraID: uint(newPedesFlowInfo.CameraId), Time: time.Now().Format("20060102150405"), PersonNum: uint(len(newPedesFlowInfo.BoxRect))})
 			}
