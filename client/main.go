@@ -30,6 +30,8 @@ func main() {
 
 	pedesFlowService := service.NewPedesFlowService(mysqlDb)
 
+	// var tmpTimeStamp = time.Time{}
+
 	for {
 		resp, err := detectResultServiceClient.DetectedRect(ctx, &Detect.DetectRequest{Status: true})
 		if err != nil {
@@ -47,8 +49,8 @@ func main() {
 		if resp.Status {
 			for _, newPedesFlowInfo := range resp.GetCameraRect() {
 				// format pd timestamp to Time
-				time.Unix(resp.GetRespTimestamp().Seconds, int64(resp.GetRespTimestamp().Nanos))
-
+				// time.Unix(resp.GetRespTimestamp().Seconds, int64(resp.GetRespTimestamp().Nanos))
+				log.Println(resp)
 				err = pedesFlowService.NewPedesFlowInfo(
 					model.PedesFlowInfo{CameraID: uint(newPedesFlowInfo.CameraId), Time: time.Now().Format("20060102150405"), PersonNum: uint(len(newPedesFlowInfo.BoxRect))})
 			}
@@ -60,6 +62,6 @@ func main() {
 		if nil != err {
 			break
 		}
-		time.Sleep(time.Millisecond * 1000)
+		time.Sleep(time.Millisecond * 4000)
 	}
 }
